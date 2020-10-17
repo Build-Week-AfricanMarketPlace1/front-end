@@ -11,3 +11,55 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 15rem;
+}
+
+input {
+  margin: 5px;
+  border: 2px, grey, solid;
+  border-radius: 10px;
+  padding: 7px;
+  background-color: whitesmoke;
+  color: slategray;
+}
+::placeholder {
+  color: slategray;
+}
+
+select {
+  border: 2px, grey, solid;
+  border-radius: 10px;
+  padding: 7px;
+  background-color: whitesmoke;
+  color: slategray;
+}
+
+button {
+  border: 2px, grey, solid;
+  border-radius: 10px;
+  padding: 7px;
+  background-color: whitesmoke;
+  color: slategray;
+}
+.header-one {
+  display: flex;
+  margin-left: 3rem;
+}
+
+.welcome {
+  margin-left: 2rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.image {
+  margin-top: 4rem;
+  width: 100%;
+}
