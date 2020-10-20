@@ -19,7 +19,7 @@ export default function SignIn() {
     password: "",
   });
 
-  const [post, setPost] = useState([]);
+  const [setPost] = useState([]);
 
   const validateChange = (e) => {
     yup
@@ -126,7 +126,7 @@ export default function SignIn() {
         Submit
       </button>
       <Link to = "">Forgot Username/Password</Link>
-      <Link to="/Registration">Don't have an account? Please register</Link>
+      <Link to="/SignUp">Don't have an account? Please register</Link>
     </form>
   );
 }
