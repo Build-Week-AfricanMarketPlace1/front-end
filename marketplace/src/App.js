@@ -1,14 +1,17 @@
 import React, { useState} from 'react';
+// styling
+import styled from 'styled-components';
+import './App.css';
+// components
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import AddItem from './components/AddItem';
+import Data from './components/Data';
+// routing
 import { BrowserRouter as Router, Link,  Route, Switch } from 'react-router-dom';
 import Image from './africanmarketplace.png';
-import AddItem from './components/AddItem';
-import styled from 'styled-components';
-import Data from './components/Data';
-import './App.css';
 
-function App() {
+function App(props) {
 
   const [item] = useState(Data);
 
@@ -49,6 +52,11 @@ function App() {
       
     </div>
   );
+}
+const mapStateToProps = state => {
+  return{
+    // state this component needs
+  }
 }
 
 export default App;

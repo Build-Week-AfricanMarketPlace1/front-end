@@ -44,6 +44,11 @@ const ItemCard = (props) => {
             )})}
         </Wrapper>
     );
+    const mapStateToProps = state => {
+        return{
+          // state this component needs
+        }
+      }
 };
 
 export default ItemCard; 
