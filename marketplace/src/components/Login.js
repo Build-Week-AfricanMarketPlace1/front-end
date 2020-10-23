@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function SignIn() {
   const [formState, setFormState] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -16,7 +16,7 @@ export default function SignIn() {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [errors, setErrors] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -56,7 +56,7 @@ export default function SignIn() {
         setServerError(null);
 
         setFormState({
-          email: "",
+          username: "",
           password: "",
         });
       })
@@ -98,16 +98,16 @@ export default function SignIn() {
       {serverError ? <p className="error">{serverError}</p> : null}
 
         <input
-          id="email"
+          id="username"
           type="text"
-          name="email"
+          name="username"
           value={formState.email}
-          placeholder="Email"
+          placeholder="Username"
           onChange={inputChange}
-          data-cy="email"
+          data-cy="username"
         />
-        {errors.email.length > 0 ? (
-          <p className="error">{errors.email}</p>
+        {errors.username.length > 0 ? (
+          <p className="error">{errors.username}</p>
         ) : null}
 
      

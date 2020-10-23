@@ -5,7 +5,7 @@ import axios from "axios";
 export default function SignUp() {
  
   const [formState, setFormState] = useState({
-    name: "",
+    username: "",
     email: "",
     password:"",
     passwordConfirmation:"",
@@ -21,7 +21,7 @@ export default function SignUp() {
   
 
   const [errors, setErrors] = useState({
-    name: "", 
+    username: "", 
     email: "",
     password:"",
     passwordConfirmation:"",
@@ -73,7 +73,7 @@ export default function SignUp() {
 
       
         setFormState({
-          name: "",
+          username: "",
           email: "",
           password:"",
           passwordConfirmation:"",
@@ -134,15 +134,15 @@ export default function SignUp() {
 
       
         <input
-          id="name"
+          id="username"
           type="text"
-          name="name"
-          value={formState.name}
-          placeholder="name"
+          name="username"
+          value={formState.username}
+          placeholder="username"
           onChange={inputChange}
-          data-cy="name"
+          data-cy="username"
         />
-        {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
+        {errors.username.length > 0 ? <p className="error">{errors.username}</p> : null}
       
         <input
           id="email"
