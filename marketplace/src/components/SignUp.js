@@ -158,7 +158,7 @@ export default function SignUp() {
         ) : null}
       
           <input
-          type="password"
+          type="string"
           id="password"
           name="password"
           value={formState.password}
@@ -168,7 +168,7 @@ export default function SignUp() {
           />
          
           <input
-          type="password"
+          type="string"
           id="passwordConfirmation"
           name="passwordConfirmation"
           value={formState.passwordConfirmation}

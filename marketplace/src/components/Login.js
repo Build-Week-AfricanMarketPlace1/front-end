@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import { baseURL } from '../api/axiosWithAuth'
 import { Link } from "react-router-dom";
 
 
 export default function SignIn() {
   const [formState, setFormState] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -15,38 +16,38 @@ export default function SignIn() {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [errors, setErrors] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
   const [setPost] = useState([]);
 
-  const validateChange = (e) => {
-    yup
-      .reach(formSchema, e.target.name)
-      .validate(e.target.name === "terms" ? e.target.checked : e.target.value)
-      .then((valid) => {
-        setErrors({
-          ...errors,
-          [e.target.name]: "",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
+  // const validateChange = (e) => {
+  //   yup
+  //     .reach(formSchema, e.target.name)
+  //     .validate(e.target.name === "terms" ? e.target.checked : e.target.value)
+  //     .then((valid) => {
+  //       setErrors({
+  //         ...errors,
+  //         [e.target.name]: "",
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
 
-        setErrors({
-          ...errors,
-          [e.target.name]: err.errors[0],
-        });
-      });
-  };
+  //       setErrors({
+  //         ...errors,
+  //         [e.target.name]: err.errors[0],
+  //       });
+  //     });
+  // };
 
   const formSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted!");
 
     axios
-      .post("https://reqres.in/api/users", formState)
+      .post(`${baseURL}auth/login`, formState)
       .then((res) => {
         console.log("success!", res.data);
 
@@ -55,7 +56,7 @@ export default function SignIn() {
         setServerError(null);
 
         setFormState({
-          email: "",
+          username: "",
           password: "",
         });
       })
@@ -73,40 +74,40 @@ export default function SignIn() {
         e.target.type === "checkbox" ? e.target.checked : e.target.value,
     };
 
-    validateChange(e);
+    // validateChange(e);
     setFormState(newFormData);
   };
 
-  const formSchema = yup.object().shape({
-    email: yup
-      .string()
-      .email("Must be a valid email")
-      .required("Must include an email"),
+  // const formSchema = yup.object().shape({
+  //   email: yup
+  //     .string()
+  //     .username("Must be a valid email")
+  //     .required("Must include an email"),
 
-    password: yup.string().required("Password is required"),
-  });
+  //   password: yup.string().required("Password is required"),
+  // });
 
-  useEffect(() => {
-    formSchema.isValid(formState).then((isValid) => {
-      setButtonDisabled(!isValid);
-    });
-  }, [formState]);
+  // useEffect(() => {
+  //   formSchema.isValid(formState).then((isValid) => {
+  //     setButtonDisabled(!isValid);
+  //   });
+  // }, [formState]);
 
   return (
     <form onSubmit={formSubmit}>
       {serverError ? <p className="error">{serverError}</p> : null}
 
         <input
-          id="email"
+          id="username"
           type="text"
-          name="email"
+          name="username"
           value={formState.email}
-          placeholder="Email"
+          placeholder="Username"
           onChange={inputChange}
-          data-cy="email"
+          data-cy="username"
         />
-        {errors.email.length > 0 ? (
-          <p className="error">{errors.email}</p>
+        {errors.username.length > 0 ? (
+          <p className="error">{errors.username}</p>
         ) : null}
 
      
@@ -122,7 +123,7 @@ export default function SignIn() {
         />
    
 
-      <button disabled={buttonDisabled} type="submit">
+      <button type="submit">
         Submit
       </button>
       <Link to = "">Forgot Username/Password</Link>
