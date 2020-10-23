@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import { baseURL } from '../api/axiosWithAuth'
 import { Link } from "react-router-dom";
 
 
@@ -46,7 +47,7 @@ export default function SignIn() {
     console.log("form submitted!");
 
     axios
-      .post("https://reqres.in/api/users", formState)
+      .post(`${baseURL}auth/login`, formState)
       .then((res) => {
         console.log("success!", res.data);
 

@@ -7,7 +7,9 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import AddItem from './components/AddItem';
 import Data from './components/Data';
+import Profile from './components/Profile'
 // routing
+import PrivateRoute from './components/PrivateRoute'
 import { BrowserRouter as Router, Link,  Route, Switch } from 'react-router-dom';
 import Image from './africanmarketplace.png';
 
@@ -35,6 +37,7 @@ function App(props) {
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/SignUp">Register</StyledLink>
         <StyledLink to="/additem">Add Item</StyledLink>
+        <StyledLink to="/profile">Profile</StyledLink>
         </nav>
       </div>
         <div className= "image">
@@ -47,6 +50,7 @@ function App(props) {
           <Route exact path="/" component={Login} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/additem" component={AddItem}/>
+          <PrivateRoute path="/profile" component={Profile}/>
         </Switch>
       </Router>
       
