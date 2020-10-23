@@ -32,29 +32,29 @@ export default function SignUp() {
   const [setPost] = useState([]);
 
   
-  const validateChange = (e) => {
+  // const validateChange = (e) => {
    
 
-    yup
-      .reach(formSchema, e.target.name)
-      .validate(e.target.name === "terms" ? e.target.checked : e.target.value) 
-      .then((valid) => {
+  //   yup
+  //     .reach(formSchema, e.target.name)
+  //     .validate(e.target.name === "terms" ? e.target.checked : e.target.value) 
+  //     .then((valid) => {
        
-        setErrors({
-          ...errors,
-          [e.target.name]: ""
-        });
-      })
-      .catch((err) => {
-        console.log(err);
+  //       setErrors({
+  //         ...errors,
+  //         [e.target.name]: ""
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
 
        
-        setErrors({
-          ...errors,
-          [e.target.name]: err.errors[0]
-        });
-      });
-  };
+  //       setErrors({
+  //         ...errors,
+  //         [e.target.name]: err.errors[0]
+  //       });
+  //     });
+  // };
   
   const formSubmit = (e) => {
     e.preventDefault(); 
@@ -97,36 +97,36 @@ export default function SignUp() {
         e.target.type === "checkbox" ? e.target.checked : e.target.value
     };
 
-    validateChange(e); 
+    // validateChange(e); 
     setFormState(newFormData); 
   };
 
  
-  const formSchema = yup.object().shape({
-    name: yup.string().required("Name is a required field"), 
-    email: yup
-      .string()
-      .email("Must be a valid email")
-      .required("Must include an email"), 
+  // const formSchema = yup.object().shape({
+  //   name: yup.string().required("Name is a required field"), 
+  //   email: yup
+  //     .string()
+  //     .email("Must be a valid email")
+  //     .required("Must include an email"), 
       
-      password: yup
-      .string()
-      .required('Password is required'),
+  //     password: yup
+  //     .string()
+  //     .required('Password is required'),
 
-     passwordConfirmation: yup
-     .string()
-     .oneOf([yup.ref('password'), null], 'Passwords must match'),
+  //    passwordConfirmation: yup
+  //    .string()
+  //    .oneOf([yup.ref('password'), null], 'Passwords must match'),
      
-    terms: yup.boolean().oneOf([true], "Please agree to Terms and Conditions")
-  });
+  //   terms: yup.boolean().oneOf([true], "Please agree to Terms and Conditions")
+  // });
 
  
-  useEffect(() => {
-    formSchema.isValid(formState).then((isValid) => {
+  // useEffect(() => {
+  //   formSchema.isValid(formState).then((isValid) => {
      
-      setButtonDisabled(!isValid); 
-    });
-  }, [formState]);
+  //     setButtonDisabled(!isValid); 
+  //   });
+  // }, [formState]);
 
   return (
     <form onSubmit={formSubmit}>
@@ -191,7 +191,7 @@ export default function SignUp() {
           <p className="error">{errors.terms}</p>
         ) : null}
       </label>
-      <button disabled={buttonDisabled} type="submit">
+      <button type="submit">
         Submit
       </button>
 
