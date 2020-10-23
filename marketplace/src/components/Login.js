@@ -112,7 +112,7 @@ export default function SignIn() {
      
         
         <input
-          type="string"
+          type="password"
           id="password"
           name="password"
           value={formState.password}
