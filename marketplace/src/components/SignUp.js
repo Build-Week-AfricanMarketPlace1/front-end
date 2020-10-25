@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import { baseURL } from "../api/axiosWithAuth";
 
 export default function SignUp() {
  
@@ -59,10 +60,15 @@ export default function SignUp() {
   const formSubmit = (e) => {
     e.preventDefault(); 
     console.log("form submitted!");
+    const creds = {
+      username: formState.name,
+      email: formState.email,
+      password: formState.password
+    }
 
    
     axios
-      .post("https://reqres.in/api/users", formState)
+      .post(`${baseURL}auth/register`, creds)
       .then((res) => {
         console.log("success!", res.data);
       
