@@ -6,11 +6,10 @@ const isAuthenticated = () => {
 }
 
 const PrivateRoute = ({ component: Conponent, ...props }) => {
-    console.log("Private Route Props",props)
     return(
         <Route 
         {...props}
-        render={() => {
+        render={props => {
             if(isAuthenticated()) {
                 return <Conponent {...props} />;
             }

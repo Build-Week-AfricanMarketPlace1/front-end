@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 // styling
 import styled from 'styled-components';
 import './App.css';
@@ -38,6 +38,8 @@ function App(props) {
         <StyledLink to="/SignUp">Register</StyledLink>
         <StyledLink to="/additem">Add Item</StyledLink>
         <StyledLink to="/profile">Profile</StyledLink>
+        <StyledLink to="/marketing">Marketing</StyledLink>
+
         </nav>
       </div>
         <div className= "image">
@@ -50,6 +52,10 @@ function App(props) {
           <Route exact path="/" component={Login} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/additem" component={AddItem}/>
+          <Route path='/marketing' component={() => { 
+     window.location.href = 'https://africanmarketplace1.netlify.app/'; 
+     return null;
+}}/>
           <PrivateRoute path="/profile" component={Profile}/>
         </Switch>
       </Router>
