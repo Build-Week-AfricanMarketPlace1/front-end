@@ -4,16 +4,17 @@ import {
     GET_USER_PROFILE_START,
     GET_USER_PROFILE_SUCCESS,
     GET_USER_PROFILE_FAIL
-} from '../actions'
+} from '../actions/userActions'
 
 const initialState = {
     user: {},
-    is_fetching:false,
-    error:''
+    is_fetching: false,
+    error: ''
 }
 
 const testUser = {
-    name: 'Testerton III',
+    username: 'Testerton III',
+    email:'test@test.com',
     profile_image:'https://avatars0.githubusercontent.com/u/62022413?s=400&u=532b55c68e52bfbeb649c4fca1f3c436843497ef&v=4',
     items:''
   }

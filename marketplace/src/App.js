@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import './App.css';
 // components
 import SignUp from './components/SignUp';
-import SignIn from './components/Login';
+import Login from './components/Login';
 import AddItem from './components/AddItem';
 import Data from './components/Data';
 import Profile from './components/Profile'
@@ -47,7 +47,7 @@ function App(props) {
           <p>Welcome!</p>
         </div>
         <Switch>
-          <Route exact path="/" component={SignIn} />
+          <Route exact path="/" component={Login} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/additem" component={AddItem}/>
           <PrivateRoute path="/profile" component={Profile}/>

@@ -6,20 +6,6 @@ import { getUserData } from '../state/actions/userActions'
 
 const Profile = props => {
   const id = localStorage.getItem('id')
-  // useEffect(() => {
-  //   axiosWithAuth()
-  //   .get(`${baseURL}/auth/users/${id}`)
-  //   .then(res => {
-  //     console.log(res)
-
-  //   })
-  //   .catch() 
-  // } , [])
-
-
-  // return (
-  //       <h1>Profile page heading</h1>
-  //   )
   useEffect(() => {     
     props.getUserData(id)
   }, [])
@@ -27,7 +13,8 @@ const Profile = props => {
   return (
     <div className="profile">
       <h1>Profile data</h1>
-  <h2>Welcome {props.user.name}</h2>
+      <h2>Welcome {props.user.username}</h2>
+      <h2>Email: {props.user.email}</h2>
     </div>
   )
 }
