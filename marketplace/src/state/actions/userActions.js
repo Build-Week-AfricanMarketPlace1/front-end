@@ -10,10 +10,10 @@ export const DELETE_USER_START = 'DELETE_USER_START'
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS'
 export const DELETE_USER_FAIL = 'DELETE_USER_FAIL'
 
-export const getUserData = (id) => (dispatch) => {
+export const getUserData = () => (dispatch) => {
     dispatch({ type: GET_USER_PROFILE_START })
     axiosWithAuth()
-        .get(`users/${id}`)
+        .get(`users/${localStorage.getItem('id')}`)
         .then(res => {
             console.log(res)
             dispatch({ 
@@ -28,10 +28,10 @@ export const getUserData = (id) => (dispatch) => {
             })
         })
 }
-export const updateUserData = (id, newEmail) => (dispatch) => {
+export const updateUserData = (newEmail) => (dispatch) => {
     dispatch({ type: UPDATE_USER_EMAIL_START })
     axiosWithAuth()
-        .put(`users/${id}`, newEmail)
+        .put(`users/${localStorage.getItem('id')}`, newEmail)
         .then(res => {
             console.log(res)
             dispatch({ 
@@ -47,10 +47,10 @@ export const updateUserData = (id, newEmail) => (dispatch) => {
             })
         })
 }
-export const deleteUser = (id) => (dispatch) => {
+export const deleteUser = () => (dispatch) => {
     dispatch({ type: DELETE_USER_START })
     axiosWithAuth()
-        .delete(`users/${id}`)
+        .delete(`users/${localStorage.getItem('id')}`)
         .then(res => {
             console.log(res)
             dispatch({
