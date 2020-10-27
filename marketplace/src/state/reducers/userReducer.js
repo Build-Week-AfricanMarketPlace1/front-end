@@ -3,12 +3,18 @@
 import {
     GET_USER_PROFILE_START,
     GET_USER_PROFILE_SUCCESS,
-    GET_USER_PROFILE_FAIL
+    GET_USER_PROFILE_FAIL,
+    UPDATE_USER_EMAIL_START,
+    UPDATE_USER_EMAIL_SUCCESS,
+    UPDATE_USER_EMAIL_FAIL,
+    DELETE_USER_START,
+    DELETE_USER_SUCCESS,
+    DELETE_USER_FAIL
 } from '../actions/userActions'
 
 const initialState = {
     user: {},
-    is_fetching: false,
+    promise_waiting: false,
     error: ''
 }
 
@@ -25,20 +31,62 @@ function userReducer(state = initialState, action) {
             console.log('GET_USER_PROFILE_START')
             return {
                 ...state,
-                is_fetching: true
+                promise_waiting: true
             }
         case GET_USER_PROFILE_SUCCESS:
             console.log('GET_USER_PROFILE_SUCCESS')
             return{
                 ...state,
-                is_fetching: false,
+                promise_waiting: false,
                 user: action.payload    
             }
         case GET_USER_PROFILE_FAIL:
             console.log('GET_USER_PROFILE_FAIL')
             return {
                 ...state,
+                promise_waiting: false,
                 user: testUser,
+                error: action.payload
+            }
+        case UPDATE_USER_EMAIL_START:
+            console.log('UPDATE_USER_EMAIL_START')
+            return {
+                ...state,
+                promise_waiting: true                
+            }
+        case UPDATE_USER_EMAIL_SUCCESS:
+            console.log('UPDATE_USER_EMAIL_SUCCESS')
+            return {
+                ...state,
+                promise_waiting: false,
+                // if server returns user object
+                // user: action.payload
+                // if not execute a new get data
+            }
+        case UPDATE_USER_EMAIL_FAIL:
+            console.log('UPDATE_USER_EMAIL_FAIL')
+            return {
+                ...state,
+                promise_waiting: false,
+                error: action.payload
+            }
+        case DELETE_USER_START:
+            console.log('DELETE_USER_START')
+            return {
+                ...state,
+                promise_waiting: true,
+            }
+        case DELETE_USER_SUCCESS:
+            console.log('DELETE_USER_SUCCESS')
+            return {
+                ...state,
+                promise_waiting: false
+            }
+        case DELETE_USER_FAIL:
+            console.log('DELETE_USER_FAIL')
+            return {
+                ...state,
+                promise_waiting: true,
                 error: action.payload
             }
         default:
