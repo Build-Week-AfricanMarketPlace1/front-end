@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { getUserData, updateUserData } from '../state/actions/userActions'
+import { getUserData, updateUserData, deleteUser } from '../state/actions/userActions'
 
 const Profile = props => {
   const id = localStorage.getItem('id')
@@ -37,7 +37,8 @@ const Profile = props => {
           onChange={handleChange}
         />
         <button>Update</button>
-      </form>    
+      </form>
+      <button onClick={props.deleteUser}>Delete Your Account</button>  
     </div>
   )
 }
@@ -47,4 +48,4 @@ const mapStateToProps = (state) => {
     is_fetching: state.is_fetching
   }
 } 
-export default connect(mapStateToProps, {getUserData, updateUserData})(Profile)
+export default connect(mapStateToProps, {getUserData, updateUserData, deleteUser})(Profile)

@@ -6,7 +6,10 @@ import {
     GET_USER_PROFILE_FAIL,
     UPDATE_USER_EMAIL_START,
     UPDATE_USER_EMAIL_SUCCESS,
-    UPDATE_USER_EMAIL_FAIL
+    UPDATE_USER_EMAIL_FAIL,
+    DELETE_USER_START,
+    DELETE_USER_SUCCESS,
+    DELETE_USER_FAIL
 } from '../actions/userActions'
 
 const initialState = {
@@ -65,6 +68,25 @@ function userReducer(state = initialState, action) {
             return {
                 ...state,
                 promise_waiting: false,
+                error: action.payload
+            }
+        case DELETE_USER_START:
+            console.log('DELETE_USER_START')
+            return {
+                ...state,
+                promise_waiting: true,
+            }
+        case DELETE_USER_SUCCESS:
+            console.log('DELETE_USER_SUCCESS')
+            return {
+                ...state,
+                promise_waiting: false
+            }
+        case DELETE_USER_FAIL:
+            console.log('DELETE_USER_FAIL')
+            return {
+                ...state,
+                promise_waiting: true,
                 error: action.payload
             }
         default:
