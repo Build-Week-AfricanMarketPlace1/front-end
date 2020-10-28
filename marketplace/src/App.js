@@ -63,10 +63,5 @@ function App(props) {
     </div>
   );
 }
-const mapStateToProps = state => {
-  return{
-    // state this component needs
-  }
-}
 
 export default App;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getUserData, updateUserData, deleteUser } from '../state/actions/userActions'
 
 const Profile = props => {
+
   const [formState, setFormState] = useState({  
     email:''
   })

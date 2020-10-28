@@ -50,7 +50,7 @@ export default function SignIn() {
       .post(`${baseURL}auth/login`, formState)
       .then((res) => {
         console.log("success!", res.data);
-        localStorage.setItem('login-token', res.data.token)
+        localStorage.setItem('token', res.data.token)
         localStorage.setItem('id', res.data.auth.id)
 
         setFormState({
