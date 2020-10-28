@@ -9,7 +9,6 @@ export default function SignUp() {
     name: "",
     email: "",
     password:"",
-    passwordConfirmation:"",
     terms: true
   });
 
@@ -25,7 +24,6 @@ export default function SignUp() {
     name: "", 
     email: "",
     password:"",
-    passwordConfirmation:"",
     terms: ""
   });
 
@@ -81,7 +79,6 @@ export default function SignUp() {
           name: "",
           email: "",
           password:"",
-          passwordConfirmation:"",
           terms: true
         });
       })
@@ -172,7 +169,7 @@ export default function SignUp() {
           data-cy="password"
           />
          
-          <input
+          {/* <input
           type="password"
           id="passwordConfirmation"
           name="passwordConfirmation"
@@ -180,7 +177,7 @@ export default function SignUp() {
           placeholder=" Confirm Password"
           onChange={inputChange}
           data-cy="passwordConfirmation"
-          />
+          /> */}
      
       <label htmlFor="terms" className="terms">
         <input
