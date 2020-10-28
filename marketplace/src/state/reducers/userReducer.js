@@ -28,7 +28,7 @@ const testUser = {
 function userReducer(state = initialState, action) {
     switch (action.type) {
         case GET_USER_PROFILE_START:
-            console.log('GET_USER_PROFILE_START', state.user)
+            console.log('GET_USER_PROFILE_START')
             return {
                 ...state,
                 promise_waiting: true
@@ -59,10 +59,8 @@ function userReducer(state = initialState, action) {
             return {
                 ...state,
                 promise_waiting: false,
-                // if server returns user object
-                // user: action.payload
-                // if not execute a new get data
-            }
+                user: action.payload
+            }            
         case UPDATE_USER_EMAIL_FAIL:
             console.log('UPDATE_USER_EMAIL_FAIL')
             return {

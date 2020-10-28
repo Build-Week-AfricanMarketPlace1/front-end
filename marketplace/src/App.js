@@ -8,16 +8,15 @@ import Login from './components/Login';
 import AddItem from './components/AddItem';
 import Data from './components/Data';
 import Profile from './components/Profile'
+import UserProfile from './components/UserProfile';
 // routing
 import PrivateRoute from './components/PrivateRoute'
 import { BrowserRouter as Router, Link,  Route, Switch } from 'react-router-dom';
 import Image from './africanmarketplace.png';
 
+
 function App(props) {
-
   const [item] = useState(Data);
-
-  console.log(item);
 
   const StyledLink = styled(Link)`
   width:100px;
@@ -53,20 +52,15 @@ function App(props) {
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/additem" component={AddItem}/>
           <Route path='/marketing' component={() => { 
-     window.location.href = 'https://africanmarketplace1.netlify.app/'; 
-     return null;
-}}/>
-          <PrivateRoute path="/profile" component={Profile}/>
+            window.location.href = 'https://africanmarketplace1.netlify.app/'; 
+            return null;
+          }}/>
+          <PrivateRoute path='/profile' component={Profile} />
         </Switch>
       </Router>
       
     </div>
   );
-}
-const mapStateToProps = state => {
-  return{
-    // state this component needs
-  }
 }
 
 export default App;
