@@ -5,13 +5,13 @@ const isAuthenticated = () => {
     return localStorage.getItem('login-token') !== null;
 }
 
-const PrivateRoute = ({ component: Conponent, ...props }) => {
+const PrivateRoute = ({ component: Component, ...props }) => {
     return(
         <Route 
         {...props}
         render={props => {
             if(isAuthenticated()) {
-                return <Conponent {...props} />;
+                return <Component {...props} />;
             }
             return <Redirect to='/' />
         }}

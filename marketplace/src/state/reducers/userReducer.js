@@ -28,7 +28,7 @@ const testUser = {
 function userReducer(state = initialState, action) {
     switch (action.type) {
         case GET_USER_PROFILE_START:
-            console.log('GET_USER_PROFILE_START')
+            console.log('GET_USER_PROFILE_START', state.user)
             return {
                 ...state,
                 promise_waiting: true
@@ -68,7 +68,8 @@ function userReducer(state = initialState, action) {
             return {
                 ...state,
                 promise_waiting: false,
-                error: action.payload
+                ...state.user,
+                email: action.payload
             }
         case DELETE_USER_START:
             console.log('DELETE_USER_START')

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { getUserData, updateUserData, deleteUser } from '../state/actions/userActions'
 
 const Profile = props => {
-  const id = localStorage.getItem('id')
   const [formState, setFormState] = useState({  
     email:''
   })
@@ -16,12 +15,12 @@ const Profile = props => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.updateUserData(id, formState)
+    props.updateUserData(formState)
   }
 
   useEffect(() => {     
-    props.getUserData(id)
-  }, [])
+    props.getUserData()
+  }, [props.user.email])
 
   return (
     <div className="profile">
