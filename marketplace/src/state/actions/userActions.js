@@ -1,4 +1,4 @@
-import { axiosWithAuth, baseURL } from '../../api/axiosWithAuth'
+import axiosWithAuth from '../../api/axiosWithAuth'
 
 export const GET_USER_PROFILE_START = 'GET_USER_PROFILE_START'
 export const GET_USER_PROFILE_SUCCESS = 'GET_USER_PROFILE_SUCCESS'
@@ -13,15 +13,16 @@ export const DELETE_USER_FAIL = 'DELETE_USER_FAIL'
 export const getUserData = () => (dispatch) => {
     dispatch({ type: GET_USER_PROFILE_START })
     axiosWithAuth()
-        .get(`users/${localStorage.getItem('id')}`)
+        .get(`api/users/${localStorage.getItem('id')}`)
         .then(res => {
-            console.log(res)
+            console.log(res.data)
             dispatch({ 
                 type: GET_USER_PROFILE_SUCCESS, 
-                payload: res
+                payload: res.data
             })
         })
         .catch(err => {
+            console.log(err)
             dispatch({ 
                 type: GET_USER_PROFILE_FAIL,
                 payload: err.message
@@ -31,13 +32,23 @@ export const getUserData = () => (dispatch) => {
 export const updateUserData = (newEmail) => (dispatch) => {
     dispatch({ type: UPDATE_USER_EMAIL_START })
     axiosWithAuth()
-        .put(`users/${localStorage.getItem('id')}`, newEmail)
+        .put(`api/users/${localStorage.getItem('id')}`, newEmail)
         .then(res => {
             console.log(res)
-            dispatch({ 
-                type: UPDATE_USER_EMAIL_SUCCESS,
-                payload: res.data
-            })
+            axiosWithAuth()
+                .get(`api/users/${localStorage.getItem('id')}`)
+                .then(respose => {
+                    console.log(respose)
+                    dispatch({ 
+                        type: UPDATE_USER_EMAIL_SUCCESS,
+                        payload: respose.data
+                    })
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            
+            
         })
         .catch(err => {
             console.log(err)
@@ -50,7 +61,7 @@ export const updateUserData = (newEmail) => (dispatch) => {
 export const deleteUser = () => (dispatch) => {
     dispatch({ type: DELETE_USER_START })
     axiosWithAuth()
-        .delete(`users/${localStorage.getItem('id')}`)
+        .delete(`api/users/${localStorage.getItem('id')}`)
         .then(res => {
             console.log(res)
             dispatch({

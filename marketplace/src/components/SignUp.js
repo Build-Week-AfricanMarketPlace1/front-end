@@ -59,7 +59,6 @@ export default function SignUp() {
   
   const formSubmit = (e) => {
     e.preventDefault(); 
-    console.log("form submitted!");
     const creds = {
       username: formState.name,
       email: formState.email,
@@ -68,7 +67,7 @@ export default function SignUp() {
 
    
     axios
-      .post(`${baseURL}auth/register`, creds)
+      .post(`${baseURL}api/auth/register`, creds)
       .then((res) => {
         console.log("success!", res.data);
       
